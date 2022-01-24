@@ -1,0 +1,49 @@
+﻿@model CarRental.Models.Trailer
+
+@{
+    ViewData["Title"] = "Удаление";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LicensePlate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LicensePlate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Carrying)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Carrying)
+        </dd>
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>*@
+        @*<dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Color.Id)
+            </dd class>*@
+
+    </dl>
+    @if (Model.Colors.Count > 0)
+    {
+        <div class="display-label"><b>Цвета</b></div>
+        <ul>
+            @foreach (Color c in Model.Colors)
+            {
+                <li>@c.Name</li>
+            }
+        </ul>
+    }
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>
